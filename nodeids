@@ -1,0 +1,10 @@
+[
+  "tests/test_app.py::test_ai",
+  "tests/test_app.py::test_form_state_update_allowed",
+  "tests/test_app.py::test_health",
+  "tests/test_app.py::test_high_impact_save_succeeds_with_assigned_to",
+  "tests/test_app.py::test_list_state_edit_blocked",
+  "tests/test_app.py::test_onchange_sets_urgency",
+  "tests/test_app.py::test_onsubmit_blocks_missing_assigned_to",
+  "tests/test_app.py::test_reverse_condition"
+]

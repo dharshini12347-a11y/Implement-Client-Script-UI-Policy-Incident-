@@ -1,0 +1,27 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Incident Client Script & UI Policy</title><link rel="stylesheet" href="/static/style.css">
+</head><body>
+<header><div><div class="eyebrow">SERVICENOW INCIDENT DEMO</div><h1>Client Script & UI Policy Simulator</h1><p>High Impact Control • onChange • onSubmit • onCellEdit</p></div><span id="apiStatus" class="pill">Checking…</span></header>
+<main><section class="layout">
+<article class="card"><h2>Incident Form</h2><form id="incidentForm">
+<input type="hidden" id="incidentId">
+<label>Caller<input id="caller" required value="Demo User"></label>
+<label>Category<select id="category"><option>Software</option><option>Hardware</option><option>Network</option><option>Inquiry</option></select></label>
+<label>Short Description<input id="shortDescription" required value="Test incident"></label>
+<label>Description<textarea id="description">Incident created for testing.</textarea></label>
+<div class="two"><label>Impact<select id="impact"><option value="1">1 - High</option><option value="2">2 - Medium</option><option value="3" selected>3 - Low</option></select></label>
+<label>Urgency<select id="urgency"><option value="1">1 - High</option><option value="2">2 - Medium</option><option value="3" selected>3 - Low</option></select></label></div>
+<label>Assignment Group<input id="assignmentGroup" placeholder="Required for High Impact"></label>
+<label>Assigned To<input id="assignedTo" placeholder="Required for High Impact"></label>
+<label>State<select id="state"><option value="1">New</option><option value="2">In Progress</option><option value="3">On Hold</option><option value="6">Resolved</option><option value="7">Closed</option></select></label>
+<div id="rules" class="rulebox">New incident — choose an Impact value.</div>
+<button type="submit">Save Incident</button><button type="button" class="secondary" onclick="newIncident()">New</button>
+</form><div id="message"></div></article>
+<article class="card"><h2>Live Validation</h2><div id="liveState">New incident</div>
+<div class="flow"><span>Impact</span><b>→</b><span>UI Policy</span><b>→</b><span>Field Behavior</span></div>
+<h3>Documented behaviors</h3><ul><li>Impact = High: Assignment Group mandatory.</li><li>Impact = High: Urgency read-only.</li><li>onChange: Impact High sets Urgency High.</li><li>onSubmit: High Impact + empty Assigned To blocks save.</li><li>onCellEdit: direct State list edits are blocked.</li></ul></article>
+<article class="card wide"><div class="row"><h2>Incidents</h2><button class="secondary" onclick="loadIncidents()">Refresh</button></div>
+<div class="table-wrap"><table><thead><tr><th>Number</th><th>Short Description</th><th>Impact</th><th>Urgency</th><th>Assigned To</th><th>State</th><th>Action</th></tr></thead><tbody id="incidentTable"></tbody></table></div></article>
+<article class="card wide"><h2>AI Explanation</h2><p>The optional LLM explains deterministic validation; it does not control save decisions.</p><div id="aiBox" class="ai">Select an incident, then click Explain with AI.</div><button onclick="explainAI()">Explain with AI</button></article>
+</section></main><script src="/static/app.js"></script></body></html>
